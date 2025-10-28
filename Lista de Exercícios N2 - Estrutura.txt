@@ -1,0 +1,126 @@
+Lista de Exercícios N2 - Estrutura de Dados II
+
+Parte 1 - Teoria (Respostas)
+
+1. O que significa alocação estática de memória para um conjunto de elementos?
+
+Alocação estática de memória para um conjunto de elementos (como um vetor/array) significa que o espaço de memória necessário é reservado pelo compilador em tempo de compilação. O tamanho da estrutura é fixo e predefinido, e não pode ser alterado durante a execução do programa. Variáveis alocadas estaticamente geralmente residem no segmento de Dados e mantêm seu valor durante toda a vida útil do programa.
+
+2. Qual a diferença entre alocação estática e alocação dinâmica?
+
+Característica,Alocação Estática,Alocação Dinâmica
+Quando ocorre,Em tempo de compilação.,Em tempo de execução (sob demanda).
+Tamanho,"Fixo, predefinido.","Variável, pode ser ajustado (malloc/new, realloc)."
+Onde aloca,Pilha (Stack) ou Segmento de Dados.,Heap.
+Gerenciamento,Automático (pelo compilador/sistema).,"Manual (pelo programador, usando free/delete)."
+Uso de Memória,Pode gerar desperdício (se superdimensionado).,"Mais eficiente, utiliza apenas o espaço necessário."
+
+
+3. O que é um ponteiro?
+Um ponteiro (ou apontador) é um tipo de dado cujo valor armazena o endereço de memória de outro objeto ou valor. Ele é usado para referenciar (apontar para) dados alocados em outras áreas da memória. Em C/C++, ponteiros são cruciais para:
+
+Gerenciamento e alocação dinâmica de memória (new/malloc).
+
+Implementação de estruturas de dados dinâmicas (listas, árvores, grafos).
+
+Acesso direto e eficiente a dados.
+
+
+
+4. O que é uma estrutura de dados homogêneos?
+Estruturas de dados homogêneos são aquelas em que todos os elementos constituintes possuem o mesmo tipo de dado ou natureza.
+
+Exemplo: Um vetor de inteiros, onde cada posição armazena exclusivamente um valor do tipo int.
+
+
+5. O que é uma estrutura de dados heterogêneos?
+Estruturas de dados heterogêneos são aquelas que podem conter elementos de tipos de dados diferentes ou naturezas distintas.
+
+Exemplo: Uma estrutura (struct em C/C++) que armazena o nome (string), idade (inteiro) e salário (ponto flutuante) de uma pessoa.
+
+
+
+6. Qual a vantagem das listas sobre os vetores em termos de consumo de memória? Exemplifique.
+A principal vantagem das listas encadeadas sobre os vetores estáticos em relação ao consumo de memória é o uso de alocação dinâmica.
+
+Vantagem: Listas encadeadas alocam memória para cada nó apenas no momento em que ele é inserido, utilizando exatamente o espaço necessário para a quantidade atual de dados.
+
+Desvantagem do Vetor Estático: Se um vetor estático for dimensionado para o máximo de elementos esperados, mas armazenar apenas uma fração, a memória restante fica reservada, mas não utilizada, resultando em desperdício de memória.
+
+Exemplo: Se você precisa armazenar até 1.000 clientes, mas só tem 50 cadastrados:
+
+Vetor Estático: Aloca espaço para 1.000 clientes na memória; 950 posições estão reservadas, mas vazias (desperdício).
+
+Lista Encadeada: Aloca espaço para exatamente 50 nós (clientes), reservando mais memória apenas se um 51º cliente for adicionado.
+
+
+
+7. O que é uma lista simplesmente encadeada? Apresente um diagrama para ilustrar essa estrutura de dados.
+Uma lista simplesmente encadeada é uma sequência de nós (células) onde cada nó contém o dado e um único ponteiro (referência) para o próximo nó da sequência. A lista só pode ser percorrida em uma direção (do início ao fim). O último nó aponta para NULL, indicando o final da lista.
+
+Ponteiro para Início (HEAD) → [Dado | → Próximo] → [Dado | → Próximo] → [Dado | → NULL]
+
+8. O que é uma lista duplamente encadeada? Apresente um diagrama para ilustrar essa estrutura de dados.
+Nota: (A questão 9 é idêntica à 8. Ambas se referem à lista duplamente encadeada.)
+
+Uma lista duplamente encadeada é uma sequência de nós onde cada nó contém o dado e dois ponteiros: um para o próximo nó (next) e outro para o nó anterior (prev). Essa estrutura permite percorrer a lista em ambas as direções (para frente e para trás). O primeiro nó tem o ponteiro prev apontando para NULL, e o último nó tem o ponteiro next apontando para NULL.
+
+Diagrama (Representação Conceitual):Ponteiro para Início (HEAD) → [← Anterior | Dado | → Próximo] ↔ [← Anterior | Dado | → Próximo] ↔ [← Anterior | Dado | → NULL]
+
+9. O que é uma lista duplamente encadeada? Apresente um diagrama para ilustrar essa estrutura de dados.
+Uma lista duplamente encadeada é uma estrutura de dados dinâmica em que cada elemento (ou nó) armazena três partes:
+
+Um ponteiro para o nó anterior,
+
+O dado (ou valor),
+
+Um ponteiro para o próximo nó.
+
+Dessa forma, é possível percorrer a lista nos dois sentidos — tanto do início para o fim quanto do fim para o início — o que facilita inserções e remoções em qualquer posição.
+
+onteiro para Início (HEAD) → [← Anterior | Dado | → Próximo] ↔ [← Anterior | Dado | → Próximo] ↔ [← Anterior | Dado | → NULL]
+
+
+10. Explique o funcionamento do algoritmo de busca binária e sequencial.
+
+
+Algoritmo,Funcionamento,Requisito,Complexidade (Pior Caso)
+Busca Sequencial,"Percorre a lista (ou vetor) elemento por elemento, em ordem, comparando cada um com o valor procurado. A busca é concluída ao encontrar o valor ou após percorrer todos os elementos.",A lista não precisa estar ordenada.,O(n)
+Busca Binária,"Funciona em uma lista ordenada. Repetidamente, divide a lista pela metade, comparando o valor procurado com o elemento do meio. Se o valor for maior, a busca continua na metade superior; se for menor, na metade inferior.",A lista deve estar ordenada.,O(logn)
+
+
+
+11. Explique o funcionamento dos seguintes algoritmos de ordenação: Insertion sort, Selection sort, Merge sort, Count sort, Quicksort.
+Insertion Sort (Ordenação por Inserção):
+
+Constrói a lista final ordenada um item por vez.
+
+Pega um elemento da parte não ordenada e o insere na sua posição correta na parte já ordenada, deslocando os elementos maiores para a direita.
+
+Selection Sort (Ordenação por Seleção):
+
+Divide a lista em duas partes: ordenada e não ordenada.
+
+Em cada iteração, seleciona o menor elemento da parte não ordenada e o troca de lugar com o primeiro elemento da parte não ordenada.
+
+Merge Sort (Ordenação por Intercalação):
+
+Algoritmo de "dividir e conquistar".
+
+Divide a lista recursivamente em sub-listas de um elemento (trivialmente ordenadas).
+
+Combina (Merge) as sub-listas ordenadas de forma a produzir novas sub-listas ordenadas maiores, até que a lista original esteja completa e ordenada.
+
+Count Sort (Ordenação por Contagem):
+
+Algoritmo de ordenação não comparativo, adequado quando o intervalo de valores é pequeno.
+
+Conta o número de ocorrências de cada valor de elemento e usa essa contagem para calcular a posição de cada elemento na lista de saída.
+
+Quicksort:
+
+Algoritmo de "dividir e conquistar" que usa um pivô.
+
+Seleciona um pivô e particiona o array em torno dele, colocando todos os elementos menores que o pivô à sua esquerda e todos os elementos maiores à sua direita.
+
+Aplica-se o processo recursivamente às sub-listas criadas.
