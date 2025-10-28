@@ -1,4 +1,4 @@
-Lista de Exercícios N2 - Estrutura de Dados II
+
 
 Parte 1 - Teoria (Respostas)
 
@@ -124,3 +124,4 @@ Algoritmo de "dividir e conquistar" que usa um pivô.
 Seleciona um pivô e particiona o array em torno dele, colocando todos os elementos menores que o pivô à sua esquerda e todos os elementos maiores à sua direita.
 
 Aplica-se o processo recursivamente às sub-listas criadas.
+
